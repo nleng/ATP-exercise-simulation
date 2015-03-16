@@ -27,8 +27,7 @@ ATPusageFactor = 1.
 ATPusageFactorStart = 1.
 ATPusageFactorMid = 1.
 ATPusageFactorEnd = 1.
-countala = 0
-global_summa = 0.
+
 t_fluxes = []
 ATPusageFactor_array = [[], []]
 v_O2_array = []
@@ -197,7 +196,6 @@ def v_CK(ATP, ADP, PCr, Cr, H):
 
 def v_UT(ATP):
     return kUT/(1. + KmA/ATP)
-    #return kUT2*ATP
 
 
 def v_AK(ATP, ADP, AMP):
@@ -213,7 +211,7 @@ def v_lac(pyruvate, lactate, H):
 def v_lac_eff(lactate):
     return k_lac_eff*(lactate - 1.)
 
-def v_AD(ADP, AMP, Pi, H, ATPuse): # nimmt noch ein H weg!!! siehe 00KONSTANTEN.txt # inhibitor ATP und activator ADP, paper: AMPdesaminase_ADP_activation_ATP_inhibitor
+def v_AD(ADP, AMP, Pi, H, ATPuse): 
     myosin_factor = 1. + ATPuse/30.
     if getPH(H) > 6.5 and getPH(H) <= 7.5:
         return kAD * AMP /(AMP + AMPd_K*Pi/x0[4]/ADP*x0[1]/myosin_factor) * (7.5-getPH(H))
@@ -253,8 +251,7 @@ def printFuxes():
     print "v_DH/v_glyco: ", v_DH(x0[18], x0[6])/v_glyco(x0[1], x0[8])
 
 def systemala(x, t):
-    global t_global, ATPusageFactor, countala
-    countala += 1
+    global t_global, ATPusageFactor
     dxdt = [0. for i in range(spezies_num)]
     if do_exercise:
         transitionTime = 5./60.
@@ -315,7 +312,7 @@ def systemala(x, t):
     dxdt[15] = 0. # NOT USED right now
     dxdt[16] = vs_EFF
     dxdt[17] = vs_lac_eff
-    dxdt[18] = 15.*(vs_DH - vs_C1)/5. # /5. ist buffering capacity for NAD
+    dxdt[18] = 15.*(vs_DH - vs_C1)/5. # /5. is the buffering capacity for NAD
     dxdt[19] = 15.*(vs_C1 - vs_C3)
     dxdt[20] = 15.*(vs_C3 - 2.*vs_C4)
     

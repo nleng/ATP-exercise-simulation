@@ -223,7 +223,7 @@ def v_AS(ATP, AMP, IMP):     # effektiv: IMP + ATP -> AMP + ADP + Pi (eigentlich
     return kAS*GTP * IMP / (1. + GTP/Km_GTP) / (1. + IMP/Km_IMP + AMP/Km_AMP)
 
 def v_PL(IMP):
-    return kPL * (IMP-x0[11])
+    return kPL * (IMP-x0[11])**2
 
 def v_IS(ATP, ADP, AMP, IMP):
     if (x0[0]+x0[1]+x0[2])+x0[11]-ATP-ADP-AMP-IMP>1.e-3:

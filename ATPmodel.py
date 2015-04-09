@@ -95,7 +95,7 @@ kPL = 2.18
 kIS = 0.0485
 Km_GTP = 0.1
 Km_IMP = 0.3
-Km_AMP = 3.057
+Ki_AMP = 3.057
 KmATP_IS = 0.014
 KiADP_IS = 0.01
 KiAMP_IS = 0.092
@@ -218,9 +218,9 @@ def v_AD(ADP, AMP, Pi, H, ATPuse):
     else:
         return kAD * AMP /(AMP + AMPd_K*Pi/x0[4]/ADP*x0[1]/myosin_factor) * (7.5-6.5)
 
-def v_AS(ATP, AMP, IMP):     # effektiv: IMP + ATP -> AMP + ADP + Pi (eigentlich GTP->GDP), inhibiert durch AMP
-    GTP = 0.148*ATP  # traut1994physiological
-    return kAS*GTP * IMP / (1. + GTP/Km_GTP) / (1. + IMP/Km_IMP + AMP/Km_AMP)
+def v_AS(ATP, AMP, IMP):
+    GTP = 0.148*ATP
+    return kAS*GTP * IMP / (1. + GTP/Km_GTP) / (1. + IMP/Km_IMP + AMP/Ki_AMP)
 
 def v_PL(IMP):
     return kPL * (IMP-x0[11])**2

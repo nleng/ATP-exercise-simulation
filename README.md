@@ -3,7 +3,7 @@ Simulation of metabilite dynamics during high intensity exercise using a determi
 
 ### Installation
 
-Make sure that python and the packages numpy, scipy and matplotlib are installed. Then just run 
+Make sure that python and the packages numpy, scipy and matplotlib are installed. Then just run in command line:
 
 python plot.py
 

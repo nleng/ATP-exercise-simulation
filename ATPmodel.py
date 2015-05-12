@@ -5,6 +5,7 @@ import scipy.integrate as itg
 
 do_exercise = True
 
+# this is the starting value for the atp usage multiplied by the resting state
 max_atp_usage = 300.
 # determines the mitochondrial ATP synthesis, healthy controls have 1.0, CFS patients between 0.6-1.0
 CFS_factor = 1.

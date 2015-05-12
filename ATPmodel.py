@@ -294,15 +294,15 @@ def systemala(x, t):
         vs_PL = v_PL(x[11])
     vs_UT = v_UT(x[0]) * ATPusageFactor
     
-    dxdt[0] = vs_EX - vs_UT + vs_AK + vs_CK + 1.5*vs_glyco - vs_AS - 5.*vs_IS # - vs_PS
+    dxdt[0] = vs_EX - vs_UT + vs_AK + vs_CK + 1.5*vs_glyco - vs_AS - 5.*vs_IS
     dxdt[1] = - vs_EX + vs_UT - 2*vs_AK - vs_CK - 1.5*vs_glyco + vs_AS + 4.*vs_IS
-    dxdt[2] = vs_AK + vs_AS - vs_AD + vs_IS # vs_PS  # vs_IS
+    dxdt[2] = vs_AK + vs_AS - vs_AD + vs_IS
     dxdt[3] = 15.*(vs_SN - vs_EX)
-    dxdt[4] = vs_UT - vs_Pi - 1.5*vs_glyco + vs_AS + 6.*vs_IS # + 2.*vs_PS
+    dxdt[4] = vs_UT - vs_Pi - 1.5*vs_glyco + vs_AS + 6.*vs_IS
     dxdt[5] = 15.*(vs_Pi - vs_SN)
     dxdt[6] = vs_glyco - vs_DH/NADH_per_pyruvate - vs_lac
     dxdt[7] =  - 15.*(2.*(2.+2.*u)*vs_C4 + (4.-2.*u)*vs_C3 + 4.*vs_C1 - nA*vs_SN - u*vs_EX - (1.-u)*vs_Pi -vs_LK - (1.-r_H2PO4(x[7]))*vs_Pi + (1.-r_H2PO4(x[7]))*vs_SN)
-    dxdt[8] = 2.*(2.+2.*u)*vs_C4 + (4.-2.*u)*vs_C3 + 4.*vs_C1 - nA*vs_SN - u*vs_EX - (1.-u)*vs_Pi -vs_LK - vs_CK - vs_EFF + (0.5+1.5*r_H2PO4(x[8]))*(vs_glyco-vs_DH/NADH_per_pyruvate) - (1.-r_H2PO4(x[8]))*vs_Pi + (1.-r_H2PO4(x[8]))*(vs_UT+6.*vs_IS) +(2.-r_H2PO4(x[8]))*vs_AS- vs_lac - vs_AD # eigentlich +(0.5+1.5*r_H2PO4(x[8]))*(vs_glyco -vs_DH/5.6)
+    dxdt[8] = 2.*(2.+2.*u)*vs_C4 + (4.-2.*u)*vs_C3 + 4.*vs_C1 - nA*vs_SN - u*vs_EX - (1.-u)*vs_Pi -vs_LK - vs_CK - vs_EFF + (0.5+1.5*r_H2PO4(x[8]))*(vs_glyco-vs_DH/NADH_per_pyruvate) - (1.-r_H2PO4(x[8]))*vs_Pi + (1.-r_H2PO4(x[8]))*(vs_UT+6.*vs_IS) +(2.-r_H2PO4(x[8]))*vs_AS- vs_lac - vs_AD
     dxdt[9] = vs_lac - vs_lac_eff
     dxdt[10] = - dxdt[3]
     dxdt[11] = - vs_AS + vs_AD - vs_PL + vs_IS
@@ -327,7 +327,7 @@ def systemala(x, t):
         t_fluxes.append(t)
         fluxes[0].append(-vs_UT) # ATPuse
         fluxes[1].append(vs_EX) # oxPhos
-        fluxes[2].append(1.5*vs_DH/NADH_per_pyruvate) # vs_DH/5. # aerobic glycolysis
+        fluxes[2].append(1.5*vs_DH/NADH_per_pyruvate)  # aerobic glycolysis
         fluxes[3].append(1.5*vs_glyco) # glycolysis
         fluxes[4].append(vs_CK) #append(creatine_ATP) # creatine
         fluxes[5].append(vs_AK) # adenylate kinase

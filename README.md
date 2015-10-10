@@ -1,5 +1,5 @@
 # ATP-exercise-simulation
-Simulation of metabilite dynamics during high intensity exercise using a deterministic model based on rate equations for the relevant. You can try out an online demo at http://sim.cfs-me-research.net/.
+Simulation of metabilite dynamics during high intensity exercise (published in Biophysical Chemistry: http://www.sciencedirect.com/science/article/pii/S0301462215000630) using a deterministic model based on rate equations for the relevant. You can try out an online demo at http://sim.cfs-me-research.net/.
 
 ### Installation
 
